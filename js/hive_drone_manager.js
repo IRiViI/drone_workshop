@@ -1,4 +1,6 @@
 
+var Drone = require('./drone');
+
 function HiveDroneManager(){
 	this.drone_list = [];
 }

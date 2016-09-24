@@ -19,13 +19,19 @@ var universe = new Universe();
 
 
 wss.on('connection', (ws) => {
-  console.log(universe.drone_manager);
-  ws.send(universe.hive_manager.test);
+
+  // ------------- On connection ------------- \\
+  console.log('Client connected');
+  // create new drone
+  var drone = universe.drone_manager.createDrone(ws);
+  // add drone to drone list
+  universe.drone_manager.addDrone(drone);
+
   ws.on('close', function(){
-    console.log('Client connected');
+    console.log('Client disconnected');
   });
 
   ws.on('message',function(message){
-    console.log('Client connected');
+    console.log('Client contacted');
   });
 });
