@@ -1,3 +1,9 @@
-var drone = new Drone();
-console.log("a");
-console.log(drone);
+
+function callback(){
+	drone.assignCallback = function(){
+		console.log(drone);
+	}
+	drone.assign("$%^7ujhgy");
+}
+
+var drone = new Drone("Alice",callback);

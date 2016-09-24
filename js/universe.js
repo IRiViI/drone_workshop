@@ -11,5 +11,4 @@ Universe.prototype.drone_manager = new UniverseDroneManager();
 Universe.prototype.hive_manager = new UniverseHiveManager();
 Universe.prototype.permission_manager = new UniversePermissionManager();
 
-
 module.exports = Universe;

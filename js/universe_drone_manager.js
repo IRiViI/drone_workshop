@@ -7,7 +7,7 @@ function UniverseDroneManager(){
 
 UniverseDroneManager.prototype.createDrone = _createDrone;
 UniverseDroneManager.prototype.getDroneById = _getDroneById;
-UniverseDroneManager.prototype.getDroneByWse = _getDroneByWs;
+UniverseDroneManager.prototype.getDroneByWs = _getDroneByWs;
 UniverseDroneManager.prototype.checkDrone = _checkDrone;
 UniverseDroneManager.prototype.addDrone = _addDrone;
 UniverseDroneManager.prototype.removeDroneById = _removeDroneById;
@@ -23,12 +23,24 @@ function _addDrone(drone){
 	return true;
 }
 
-function _getDroneById(){
-
+function _getDroneById(id){
+	var t_drone = this.drone_list.length;
+	for (var i_drone = 0; i_drone < t_drone; i_drone++){
+		var drone = this.drone_list[i_drone];
+		if (drone.id = id){
+			return drone;
+		}
+	}
 }
 
-function _getDroneByWs(){
-
+function _getDroneByWs(ws){
+	var t_drone = this.drone_list.length;
+	for (var i_drone = 0; i_drone < t_drone; i_drone++){
+		var drone = this.drone_list[i_drone];
+		if (drone.ws = ws){
+			return drone;
+		}
+	}
 }
 
 function _checkDrone(){
