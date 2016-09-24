@@ -1,0 +1,26 @@
+{
+  "name": "drone_workshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IRiViI/drone_workshop.git"
+  },
+  "engines": {
+    "node": "6.2.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IRiViI/drone_workshop/issues"
+  },
+  "homepage": "https://github.com/IRiViI/drone_workshop#readme",
+  "dependencies": {
+    "express": "4.14.0"
+  }
+}
