@@ -1,0 +1,15 @@
+{
+	"hive":[
+	{
+		"id":"kaas",
+		"permissions":"user_data/user1/hive/kaas/permissions",
+		"connections":"user_data/user1/hive/kaas/connectionst"
+	},
+	{
+		"id":"boek",
+		"permissions":"user/user2/hive/boek/permissions",
+		"connections":"user/user2/hive/boek/connectionst"
+	}
+	]
+	
+}

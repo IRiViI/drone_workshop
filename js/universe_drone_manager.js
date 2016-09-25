@@ -9,6 +9,7 @@ UniverseDroneManager.prototype.createDrone = _createDrone;
 UniverseDroneManager.prototype.getDroneById = _getDroneById;
 UniverseDroneManager.prototype.getDroneByWs = _getDroneByWs;
 UniverseDroneManager.prototype.checkDrone = _checkDrone;
+UniverseDroneManager.prototype.isDrone = _isDrone;
 UniverseDroneManager.prototype.addDrone = _addDrone;
 UniverseDroneManager.prototype.removeDroneById = _removeDroneById;
 UniverseDroneManager.prototype.removeDroneByWs = _removeDroneByWs;
@@ -23,24 +24,38 @@ function _addDrone(drone){
 	return true;
 }
 
-function _getDroneById(id){
+function _isDrone(drone_id){
+	// Check if drone exists
 	var t_drone = this.drone_list.length;
 	for (var i_drone = 0; i_drone < t_drone; i_drone++){
 		var drone = this.drone_list[i_drone];
-		if (drone.id = id){
+		if (drone.id == drone_id){
+			return true;
+		}
+	}
+	return false;
+}
+
+function _getDroneById(drone_id){
+	var t_drone = this.drone_list.length;
+	for (var i_drone = 0; i_drone < t_drone; i_drone++){
+		var drone = this.drone_list[i_drone];
+		if (drone.id == drone_id){
 			return drone;
 		}
 	}
+	return null;
 }
 
 function _getDroneByWs(ws){
 	var t_drone = this.drone_list.length;
 	for (var i_drone = 0; i_drone < t_drone; i_drone++){
 		var drone = this.drone_list[i_drone];
-		if (drone.ws = ws){
+		if (drone.ws == ws){
 			return drone;
 		}
 	}
+	return null;
 }
 
 function _checkDrone(){
@@ -56,8 +71,6 @@ function _removeDroneByWs(){
 }
 
 
-
-//Universe.prototype.ws = new 
 
 module.exports = UniverseDroneManager;
 

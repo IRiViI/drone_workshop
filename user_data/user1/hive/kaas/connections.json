@@ -1,0 +1,22 @@
+[
+	{
+	"id":"drone1",
+	"connections":[
+		{"id":"drone2",
+		"offerToReceiveAudio":false,
+		"offerToReceiveVideo":true,
+		"audio":false,
+		"video":true}
+	]
+	},
+	{
+	"id":"drone2",
+	"connections":[
+		{"id":"drone2",
+		"offerToReceiveAudio":false,
+		"offerToReceiveVideo":true,
+		"audio":false,
+		"video":true}
+	]
+	}
+]

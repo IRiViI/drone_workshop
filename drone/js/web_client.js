@@ -18,9 +18,22 @@ function websocketClient(parent,callback){
     var request = JSON.parse(message.data);
     if (request.tag=="response"){
       if (request.error==null){
+
+        // Response to assign response
         if (request.original_tag=="assign"){
           parent.assignCallback();
         }
+
+        // Response to create response
+        if (request.original_tag=="create"){
+          parent.createCallback();
+        }
+
+        // Response to create response
+        if (request.original_tag=="join"){
+          parent.joinCallback();
+        }
+
       } else{
         console.log(request.error);
       }
