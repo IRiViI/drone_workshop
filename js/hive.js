@@ -19,9 +19,6 @@ function Hive(hive_id,world_id){
 	this.connection_manager.setConnectionList();
 }
 
-//Hive.prototype.permission_manager = new HivePermissionManager();
-//Hive.prototype.drone_manager = new HiveDroneManager();
-
 module.exports = Hive;
 
 

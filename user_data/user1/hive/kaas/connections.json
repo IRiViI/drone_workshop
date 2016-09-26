@@ -12,7 +12,7 @@
 	{
 	"id":"drone2",
 	"connections":[
-		{"id":"drone2",
+		{"id":"drone1",
 		"offerToReceiveAudio":false,
 		"offerToReceiveVideo":true,
 		"audio":false,

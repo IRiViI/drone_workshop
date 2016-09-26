@@ -107,6 +107,15 @@ wss.on('connection', (ws) => {
       console.log("Drone joined hive");
     }
 
+    if (request.tag == "connections"){
+      // Get drone
+      var drone = universe.drone_manager.getDroneById(request.drone_id);
+      // Get hive
+      var hive = universe.hive_manager.getHiveById(request.hive_id);
+      response.data = hive.connection_manager.getConnectedDroneConnections(request.drone_id);
+      console.log("Send connections");
+    }
+
     if (request.tag == "status"){
       // Total number of hives
       var t_hive = universe.hive_manager.hive_list.length;
