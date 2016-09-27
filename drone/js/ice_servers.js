@@ -1,4 +1,4 @@
-function webrtcServer(callback){
+function iceServers(callback){
 
   $(document).ready(function() {
     $.get("https://service.xirsys.com/ice",

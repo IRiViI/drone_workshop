@@ -1,7 +1,7 @@
 function PeerConnectionManager(){
 	// List with peer connections
 	this.peer_connection_list = [];
-	var tmp = new PeerConnection("to_drone_id","hive_id","settings");
+
 }
 
 PeerConnectionManager.prototype.addPeerConnection = _addPeerConnection;
@@ -13,5 +13,9 @@ function _addPeerConnection(){
 
 function _createPeerConnection(to_drone_id,hive_id,settings){
 
+	function callback(ice_servers){
+		var pc = PeerConnection(to_drone_id,hive_id,ice_servers,settings);
+	}
+	iceServer(callback);
 }
 
