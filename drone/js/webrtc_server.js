@@ -45,9 +45,9 @@ function webrtcServer(callback){
         ] 
       };
 
-      }
-
       callback(servers);
+
+      }
     );
   });
 
