@@ -11,7 +11,7 @@ function webrtcServer(callback){
           secure: 1
       },
       function(xirsys_data, status) {
-
+        console.log((xirsys_data);
         var servers = { 
         "iceServers": [
           {url:"stun:turn01.uswest.xirsys.com"},
@@ -51,8 +51,4 @@ function webrtcServer(callback){
     );
   });
 
-  
-
 }
-
-module.exports = webrtcServer;
