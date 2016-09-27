@@ -1,6 +1,7 @@
 function PeerConnectionManager(){
 	// List with peer connections
 	this.peer_connection_list = [];
+	new PeerConnection();
 }
 
 PeerConnectionManager.prototype.addPeerConnection = _addPeerConnection;
