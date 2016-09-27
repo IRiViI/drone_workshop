@@ -1,4 +1,4 @@
-var drone_id 	= "drone1";
+var drone_id 	= "drone2";
 var hive_id 	= "kaas";
 var key 		= "$%^7ujhgy";
 
@@ -13,7 +13,7 @@ function callback(){
 		drone.joinHive(hive_id);
 	}
 
-	drone.createFailure = function(){
+	drone.createFailure = function(error){
 		drone.joinHive(hive_id);
 	}
 
@@ -22,11 +22,11 @@ function callback(){
 		drone.getConnectionsByHiveId(hive_id);
 	}
 
-	drone.getConnectionsByHiveIdSuccesful = function(){
-
+	drone.getConnectionsByHiveIdSuccesful = function(data){
+		drone.peer_connection_manager.addPeerConnection();
 	}
 
-	drone.getConnectionsByHiveIdFailure = function(){
+	drone.getConnectionsByHiveIdFailure = function(error){
 		
 	}
 

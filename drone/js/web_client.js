@@ -23,7 +23,7 @@ function websocketClient(parent,callback){
         if (request.error==null){
           parent.assignSuccesful();
         } else{
-          parent.assignFailure();
+          parent.assignFailure(request.error);
         }
       }
 
@@ -32,7 +32,7 @@ function websocketClient(parent,callback){
         if (request.error==null){
           parent.createSuccesful();
         } else{
-          parent.createFailure();
+          parent.createFailure(request.error);
         }
       }
 
@@ -41,16 +41,16 @@ function websocketClient(parent,callback){
         if (request.error==null){
           parent.joinSuccesful();
         } else{
-          parent.joinFailure();
+          parent.joinFailure(request.error);
         }
       }
 
       // Response to get connections response
       if (request.original_tag=="connections"){
         if (request.error==null){
-          parent.getConnectionsByHiveIdSuccesful();
+          parent.getConnectionsByHiveIdSuccesful(request.data);
         } else{
-          parent.getConnectionsByHiveIdFailure();
+          parent.getConnectionsByHiveIdFailure(request.error);
         }
       }
     }

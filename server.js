@@ -9,6 +9,7 @@ const INDEX = path.join(__dirname, 'index.html');
 
  const server = express()
 	.use(express.static(__dirname + '/js'))
+  .use(express.static(__dirname + '/drone/js'))
   .use((req, res) => res.sendFile(INDEX) )
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 

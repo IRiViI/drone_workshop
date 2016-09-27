@@ -2,6 +2,7 @@ function Drone(id,callback){
 
 	this.id = id;
 	this.websocket_client = websocketClient(this,callback);
+	this.peer_connection_manager = new PeerConnectionManager();
 
 }
 
@@ -62,25 +63,25 @@ Drone.prototype.joinSuccesful = function(){
 	console.log("Warning: joinSuccesful undefined");
 }
 
-Drone.prototype.getConnectionsByHiveIdSuccesful = function(){
+Drone.prototype.getConnectionsByHiveIdSuccesful = function(data){
 	console.log("Warning: getConnectionsByHiveIdSuccesful undefined");
 }	
 
 // Default Failure callbacks
 		
-Drone.prototype.assignFailure = function(){
+Drone.prototype.assignFailure = function(error){
 	console.log("Warning: assignFailure undefined");
 }
 
-Drone.prototype.createFailure = function(){
+Drone.prototype.createFailure = function(error){
 	console.log("Warning: createFailure undefined");
 }
 
-Drone.prototype.joinFailure = function(){
+Drone.prototype.joinFailure = function(error){
 	console.log("Warning: joinFailure undefined");
 }
 
-Drone.prototype.getConnectionsByHiveIdFailure = function(){
+Drone.prototype.getConnectionsByHiveIdFailure = function(error){
 	console.log("Warning: getConnectionsByHiveIdFailure undefined");
 }
 
