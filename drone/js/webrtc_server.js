@@ -5,7 +5,7 @@ function webrtcServer(callback){
       {
           ident: "something",
           secret: "61986108-7b2f-11e6-b4ee-28ee1984c12b",
-          domain: "peaceful-journey-94586.herokuapp.com",
+          domain: "quiet-woodland-83140.herokuapp.com",
           application: "tadtest",
           room: "default",
           secure: 1

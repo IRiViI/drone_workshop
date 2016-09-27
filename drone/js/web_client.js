@@ -1,9 +1,7 @@
-function websocketClient(parent,callback){
+function websocketClient(parent,universe,callback){
 
   //var HOST = "ws://localhost:3000";
-  var HOST = location.origin.replace(/^http/, 'ws');
-  console.log(HOST);
-  var ws = new WebSocket(HOST);
+  var ws = new WebSocket(universe);
   var parent = parent;
 
   ws.onopen = function(){

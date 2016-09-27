@@ -34,4 +34,6 @@ function callback(){
 	
 }
 
-var drone = new Drone(drone_id,callback);
+
+var universe = location.origin.replace(/^http/, 'ws');
+var drone = new Drone(drone_id,universe,callback);
