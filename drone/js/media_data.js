@@ -13,12 +13,12 @@ function MediaData(settings,getUserMediaSuccess){
       }
       _getUserMediaSuccess(media_data);
     },
-    this.getUserMediaFailure
+    _getUserMediaFailure
   );
 }
 
 //MediaData.prototype.getUserMediaSuccess = _getUserMediaSuccess;
-MediaData.prototype.getUserMediaFailure = _getUserMediaFailure;
+//MediaData.prototype.getUserMediaFailure = _getUserMediaFailure;
 
 function _getUserMediaSuccess(media_data){
   console.log(media_data);
