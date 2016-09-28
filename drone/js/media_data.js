@@ -1,4 +1,4 @@
-function StreamData(video,audio){
+function MediaData(video,audio){
 
 	// user media settings
 	var settings = {
@@ -9,8 +9,8 @@ function StreamData(video,audio){
 	window.navigator.getUserMedia(settings,this.getUserMediaSuccess,this.getUserMediaFailure);
 }
 
-StreamData.prototype.getUserMediaSuccess = _getUserMediaSuccess;
-StreamData.prototype.getUserMediaFailure = _getUserMediaFailure;
+MediaData.prototype.getUserMediaSuccess = _getUserMediaSuccess;
+MediaData.prototype.getUserMediaFailure = _getUserMediaFailure;
 
 function _getUserMediaSuccess(stream){
 	console.log("Warning: getUserMediaSuccess is undefined");

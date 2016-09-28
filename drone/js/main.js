@@ -38,4 +38,4 @@ function callback(){
 
 var universe = location.origin.replace(/^http/, 'ws');
 var drone = new Drone(drone_id,universe,callback);
-var boe = new StreamData(true,false);
+var boe = new MediaData(true,false);
