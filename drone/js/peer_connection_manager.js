@@ -1,5 +1,6 @@
-function PeerConnectionManager(){
+function PeerConnectionManager(root){
 	// List with peer connections
+	this.root = root;
 	this.peer_connection_list = [];
 
 }
@@ -11,11 +12,41 @@ function _addPeerConnection(){
 	console.log("test wwwuuuuut");
 }
 
-function _createPeerConnection(to_drone_id,hive_id,settings){
+function _createPeerConnection(connection){
 
-	function callback(ice_servers){
-		var pc = new PeerConnection(to_drone_id,hive_id,ice_servers,settings);
+	// Initiate pc
+	var pc;
+
+	// get root of drone
+	var root = this.root;
+
+	function iceServerSuccesful(ice_servers){
+		pc = new PeerConnection(root,connection,ice_servers);
+		pc.createOffer(createOfferSucessful,createOfferFailure,{audio:connection.audio, video:connection.video});
 	}
-	iceServer(callback);
+	iceServer(iceServerSuccesful)
+
+	function createOfferSucessful(){
+		console.log("createOfferSucessful");
+	}
+
+	function createOfferFailure(){
+		console.log("createOfferFailure");
+
+	}
 }
 
+
+/*
+
+	// Make user media
+	function createMediaDataSuccesful(media_data){
+		iceServer(function(ice_servers){iceServerSuccesful(ice_servers,media_data)});
+	}
+
+	// Create media
+	root.media_data_manager.createMediaData(
+		{audio:connection.audio, video:connection.video},
+		createMediaDataSuccesful
+	);
+	*/

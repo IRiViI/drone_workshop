@@ -7,7 +7,7 @@ function MediaDataManager(){
 MediaDataManager.prototype.getLocalMediaDataByType 		= _getLocalMediaDataByType;
 MediaDataManager.prototype.getRemoteMediaDataByDroneId 	= _getRemoteMediaDataByDroneId;
 MediaDataManager.prototype.createMediaData 				= _createMediaData;
-MediaDataManager.prototype.addLocalMediaData 			= _addLocalMediaData;
+//MediaDataManager.prototype.addLocalMediaData 			= _addLocalMediaData;
 MediaDataManager.prototype.addRemoteMediaData 			= _addRemoteMediaData;
 MediaDataManager.prototype.addMediaDataToPeerConnection	= _addMediaDataToPeerConnection;
 
@@ -20,15 +20,18 @@ function _getRemoteMediaDataByDroneId(to_drone_id){
 
 }
 
-function _createMediaData(video,audio,getUserMediaSuccess){
+function _createMediaData(settings,createMediaSuccesful){
 
-	// user media settings
-	var settings = {
-	    audio: audio,
-	    video: video
-	};
+	// call back after creading media
+	function getUserMediaSuccesful(media_data){
+		// Add media to list
+		_addLocalMediaData(media_data);
+		// call back
+		createMediaSuccesful();
+	}
 
-	MediaData(settings,getUserMediaSuccess);
+	// Create media
+	MediaData(settings,getUserMediaSuccesful);
 
 }
 

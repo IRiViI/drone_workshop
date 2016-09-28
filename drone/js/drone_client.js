@@ -2,7 +2,7 @@ function Drone(id,universe,callback){
 
 	this.id = id;
 	this.websocket_client = websocketClient(this,universe,callback);
-	this.peer_connection_manager = new PeerConnectionManager();
+	this.peer_connection_manager = new PeerConnectionManager(this);
 	this.media_data_manager = new MediaDataManager();
 }
 

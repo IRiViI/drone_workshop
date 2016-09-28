@@ -27,26 +27,19 @@ function callback(){
 		drone.getConnectionsByHiveId(hive_id);
 	}
 
-	drone.getConnectionsByHiveIdSuccesful = function(data){
-		console.log(data);
-		var t_connection = data.length;
+	drone.getConnectionsByHiveIdSuccesful = function(connection_list){
+		console.log(connection_list);
+		var t_connection = connection_list.length;
 		for (var i_connection = 0; i_connection < t_connection; i_connection++){
-
+			var connnection = connection_list[i_connection]
+			connection.hive_id = hive_id;
+			drone.peer_connection_manager.createPeerConnection(connection);
 			drone.peer_connection_manager.addPeerConnection();
-			drone.media_data_manager.createMediaData(
-				true,
-				false,
-				createMediaDataSuccesful
-			);
 		}
 	}
 
 	drone.getConnectionsByHiveIdFailure = function(error){
 		
-	}
-
-	function createMediaDataSuccesful(media_data){
-		localVideo.srcObject = media_data.stream;
 	}
 
 	drone.assign(key);
