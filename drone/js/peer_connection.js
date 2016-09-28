@@ -1,15 +1,16 @@
 function PeerConnection(root,connection,ice_servers){
 
-	window.RTCPeerConnection.apply(this,ice_servers)
+	pc = window.RTCPeerConnection(ice_servers)
 
 	//var pc = RTCPeerConnection(ice_servers);
-	this.root = root;
-	this.drone_id = connection.drone_id;
-	this.hive_id = connection.hive_id;
+	pc.root = root;
+	pc.drone_id = connection.drone_id;
+	pc.hive_id = connection.hive_id;
+	pc.onicecandidate = _onicecandidate;
+
+	return pc;
 
 }
-
-PeerConnection.prototype.onicecandidate = _onicecandidate;
 
 function _onicecandidate(event){
 	if (event.candidate != null){
