@@ -62,8 +62,24 @@ function _checkDrone(){
 
 }
 
-function _removeDroneById(){
-
+function _removeDroneById(id){
+	var t_drone = this.drone_list.length;
+	for (var i_drone = 0; i_drone < t_drone; i_drone++){
+		var drone = this.drone_list[i_drone];
+		if (drone.id == id){
+			// Remove drone from hives
+			var t_hive = drone.hive_list.length;
+			for (i_hive = 0; i_hive < t_hive; i_hive++){
+				var hive = drone.hive_list[i_hive];
+				hive.drone_manager.removeDroneById(drone.id);
+			}
+			// Remove drone from universe
+			this.drone_list.splice(i_drone,1);
+			// Return true
+			return true;
+		}
+	}
+	return false;
 }
 
 function _removeDroneByWs(){

@@ -11,7 +11,7 @@ function Hive(hive_id,world_id){
 	// Dir of hive
 	this.dir = "./user_data/" + this.world_id + "/hive/" + this.id + "/"; // in the future, use a structure similar to the universe object
 	// Drone manager
-	this.drone_manager = new HiveDroneManager();
+	this.drone_manager = new HiveDroneManager(this);
 	// Permission manager
 	this.permission_manager = new HivePermissionManager();
 	// Connection manager

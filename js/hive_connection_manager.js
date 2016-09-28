@@ -39,7 +39,7 @@ function _getAllDroneConnections(drone_id){
 			return drone_connections.connections;
 		}
 	}
-	return null;
+	return [];
 }
 
 /**
