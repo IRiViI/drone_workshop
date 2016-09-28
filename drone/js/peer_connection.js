@@ -9,7 +9,6 @@ function PeerConnection(root,connection,ice_servers){
 	pc.settings = {connection:this.audio, video:connection.video};
 	pc.onicecandidate = _onicecandidate;
 	pc.connect = _connect;
-	pc.createOfferSucessful = _createOfferSucessful;
 	return pc;
 
 }
@@ -30,24 +29,25 @@ function _onicecandidate(event){
 }
 
 function _connect(){
+	var root = this.root;
+
 	this.createOffer(
-		this.createOfferSucessful,
-		_createOfferFailure,
+		createOfferSucessful,
+		createOfferFailure,
 		this.settings
 	);
-}
 
-function _createOfferSucessful(description){
-	console.log(this);
-    this.root.websocket_client.sendRequest(
-      	{tag:"description",
-      	drone_id:root.id,
-      	hive_id:this.hive_id,
-      	to_drone_id:this.drone_id,
-      	description:description}
-    );
-}
+	function createOfferSucessful(description){
+	    root.websocket_client.sendRequest(
+	      	{tag:"description",
+	      	drone_id:root.id,
+	      	hive_id:this.hive_id,
+	      	to_drone_id:this.drone_id,
+	      	description:description}
+	    );
+	}
 
-function _createOfferFailure(error){
-	console.log(error);
+	function createOfferFailure(error){
+		console.log(error);
+	}
 }
