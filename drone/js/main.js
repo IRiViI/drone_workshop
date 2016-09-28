@@ -1,9 +1,12 @@
-var drone_id 	= "drone2";
 var hive_id 	= "kaas";
 var key 		= "$%^7ujhgy";
 
 var localVideo = document.getElementById('localVideo');
 var remoteVideo = document.getElementById('remoteVideo');
+
+var start_button = document.getElementById('startButton');
+
+start_button.onclick = start;
 
 function callback(){
 
@@ -25,11 +28,16 @@ function callback(){
 
 	drone.getConnectionsByHiveIdSuccesful = function(data){
 		console.log(data);
-		drone.peer_connection_manager.addPeerConnection();
-		drone.media_data_manager.createMediaData(
-			true,
-			false,
-			createMediaDataSuccesful);
+		var t_data = data.length;
+		for (var i_connection = 0; i_connection < t_connection; i_connection++){
+
+			drone.peer_connection_manager.addPeerConnection();
+			drone.media_data_manager.createMediaData(
+				true,
+				false,
+				createMediaDataSuccesful
+			);
+		}
 	}
 
 	drone.getConnectionsByHiveIdFailure = function(error){
@@ -44,6 +52,8 @@ function callback(){
 	
 }
 
-
-var universe = location.origin.replace(/^http/, 'ws');
-var drone = new Drone(drone_id,universe,callback);
+function start(){
+	drone_id = document.getElementById('drone_id');
+	var universe = location.origin.replace(/^http/, 'ws');
+	var drone = new Drone(drone_id,universe,callback);
+}
