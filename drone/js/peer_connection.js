@@ -9,6 +9,7 @@ function PeerConnection(root,connection,ice_servers){
 	pc.settings = {connection:this.audio, video:connection.video};
 	pc.onicecandidate = _onicecandidate;
 	pc.connect = _connect;
+	pc.createOfferSucessful = _createOfferSucessful;
 	return pc;
 
 }
@@ -37,7 +38,7 @@ function _createOffer(offerOptions){
 
 function _connect(){
 	this.createOffer(
-		_createOfferSucessful,
+		this.createOfferSucessful,
 		_createOfferFailure,
 		this.settings
 	);
