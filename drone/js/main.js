@@ -2,6 +2,8 @@ var drone_id 	= "drone2";
 var hive_id 	= "kaas";
 var key 		= "$%^7ujhgy";
 
+var localVideo = document.getElementById('localVideo');
+var remoteVideo = document.getElementById('remoteVideo');
 
 function callback(){
 
@@ -23,16 +25,18 @@ function callback(){
 
 	drone.getConnectionsByHiveIdSuccesful = function(data){
 		drone.peer_connection_manager.addPeerConnection();
-		drone.media_data_manager.createMediaData(true,false,createMediaDataCallback);
+		drone.media_data_manager.createMediaData(
+			true,
+			false,
+			createMediaDataSuccesful);
 	}
 
 	drone.getConnectionsByHiveIdFailure = function(error){
 		
 	}
 
-	function createMediaDataCallback(media_data){
-		drone.media_data_manager.addLocalMediaData(media_data);
-		console.log(drone);
+	function createMediaDataSuccesful(media_data){
+		localVideo.srcObject = media_data.stream;
 	}
 
 	drone.assign(key);
