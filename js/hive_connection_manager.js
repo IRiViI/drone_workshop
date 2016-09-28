@@ -18,7 +18,12 @@ HiveConnectionManager.prototype.checkDroneConnection = _checkDroneConnection;
 
 
 function _setConnectionList(){
-	this.connection_list = require("." + this.settings_file);
+	try{
+		this.connection_list = require("." + this.settings_file);
+	} catch(error){
+		console.log(error);
+	}
+	
 }
 
 function _getAllDroneConnections(drone_id){
