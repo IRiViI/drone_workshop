@@ -29,13 +29,6 @@ function _onicecandidate(event){
     };
 }
 
-function _createOffer(offerOptions){
-	this.createOffer(
-    offerSuccesful,
-    offerFailure,
-    offerOptions);
-}
-
 function _connect(){
 	this.createOffer(
 		this.createOfferSucessful,
@@ -45,7 +38,7 @@ function _connect(){
 }
 
 function _createOfferSucessful(description){
-	
+	console.log(this);
     this.root.websocket_client.sendRequest(
       	{tag:"description",
       	drone_id:root.id,
