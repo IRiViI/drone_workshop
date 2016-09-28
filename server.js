@@ -28,6 +28,8 @@ wss.on('connection', (ws) => {
   universe.drone_manager.addDrone(drone);
 
   ws.on('close', function(){
+    console.log(this);
+    universe.drone_manager.removeDroneByWs(this);
     console.log('Client disconnected');
   });
 
