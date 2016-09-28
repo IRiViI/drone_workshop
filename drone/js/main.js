@@ -24,6 +24,7 @@ function callback(){
 	}
 
 	drone.getConnectionsByHiveIdSuccesful = function(data){
+		console.log(data);
 		drone.peer_connection_manager.addPeerConnection();
 		drone.media_data_manager.createMediaData(
 			true,
