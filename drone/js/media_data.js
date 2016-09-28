@@ -6,13 +6,26 @@ function MediaData(video,audio){
 	    video: video
 	};
 
-	window.navigator.getUserMedia.apply(this,settings,this.getUserMediaSuccess,this.getUserMediaFailure);
+	window.navigator.getUserMedia(
+    settings,
+    function(stream){
+      var media_data = {
+        share: null,
+        video: settings.video,
+        audio: settings.audio,
+        stream:stream
+      }
+      this.getUserMediaSuccess(media_data);
+    },
+    this.getUserMediaFailure
+  );
 }
 
 MediaData.prototype.getUserMediaSuccess = _getUserMediaSuccess;
 MediaData.prototype.getUserMediaFailure = _getUserMediaFailure;
 
-function _getUserMediaSuccess(stream){
+function _getUserMediaSuccess(media_data){
+  console(media_data);
 	console.log("Warning: getUserMediaSuccess is undefined");
 }
 
