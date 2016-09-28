@@ -11,7 +11,7 @@ function MediaData(settings,getUserMediaSuccess){
         audio: settings.audio,
         stream:stream
       }
-      _getUserMediaSuccess(media_data);
+      getUserMediaSuccess(media_data);
     },
     _getUserMediaFailure
   );
