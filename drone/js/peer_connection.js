@@ -1,16 +1,22 @@
 function PeerConnection(to_drone_id,hive_id,ice_servers,settings){
 
-	var pc = RTCPeerConnection(ice_servers);
+	RTCPeerConnection.apply(this,ice_servers)
 
-	pc.to_drone_id = to_drone_id;
-	pc.hive_id = hive_id;
-	pc.onicecandidate = _onicecandidate;
+	//var pc = RTCPeerConnection(ice_servers);
 
-	_onicecandidate = function(event){
-		
-	}
+	this.to_drone_id = to_drone_id;
+	this.hive_id = hive_id;
+
+}
+
+PeerConnection.prototype.onicecandidate = _onicecandidate;
 
 
-	return pc;
-
+_onicecandidate = function(event){
+	if (event.candidate != null){
+      if (!event || !event.candidate) {
+        return;
+      }
+      ws.sendMessage({candidate:event.candidate},to_client_id_text.value);
+    };
 }
