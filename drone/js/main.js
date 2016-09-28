@@ -24,7 +24,7 @@ function callback(){
 
 	drone.getConnectionsByHiveIdSuccesful = function(data){
 		drone.peer_connection_manager.addPeerConnection();
-		var boe = new StreamData(true,false);
+
 	}
 
 	drone.getConnectionsByHiveIdFailure = function(error){
@@ -38,3 +38,4 @@ function callback(){
 
 var universe = location.origin.replace(/^http/, 'ws');
 var drone = new Drone(drone_id,universe,callback);
+var boe = new StreamData(true,false);
