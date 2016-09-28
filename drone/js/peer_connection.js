@@ -17,11 +17,11 @@ function _onicecandidate(event){
 	      return;
 	    }
 	    root.websocket_client.sendRequest(
-	      	tag:"candidate",
+	      	{tag:"candidate",
 	      	drone_id:root.id,
 	      	hive_id:this.hive_id,
 	      	to_drone_id:this.drone_id,
-	      	candidate:event.candidate,
+	      	candidate:event.candidate}
 	    );
     };
 }
