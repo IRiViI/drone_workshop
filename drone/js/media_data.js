@@ -15,13 +15,13 @@ function MediaData(video,audio){
         audio: settings.audio,
         stream:stream
       }
-      this.getUserMediaSuccess(media_data);
+      _getUserMediaSuccess(media_data);
     },
     this.getUserMediaFailure
   );
 }
 
-MediaData.prototype.getUserMediaSuccess = _getUserMediaSuccess;
+//MediaData.prototype.getUserMediaSuccess = _getUserMediaSuccess;
 MediaData.prototype.getUserMediaFailure = _getUserMediaFailure;
 
 function _getUserMediaSuccess(media_data){
