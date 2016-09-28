@@ -1,16 +1,12 @@
-function MediaData(video,audio){
+function MediaData(settings,getUserMediaSuccess){
 
-	// user media settings
-	var settings = {
-	    audio: audio,
-	    video: video
-	};
+  this.getUserMediaSuccess = getUserMediaSuccess;
 
 	window.navigator.getUserMedia(
     settings,
     function(stream){
       var media_data = {
-        share: null,
+        share: [],
         video: settings.video,
         audio: settings.audio,
         stream:stream

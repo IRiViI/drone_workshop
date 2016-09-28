@@ -20,18 +20,26 @@ function _getRemoteStreamDataByDroneId(to_drone_id){
 
 }
 
-function _createLocalStreamData(video,audio){
+function _createLocalStreamData(video,audio,getUserMediaSuccess){
+
+	// user media settings
+	var settings = {
+	    audio: audio,
+	    video: video
+	};
+
+	MediaData(settings,getUserMediaSuccess);
 
 }
 
-function _addLocalStreamData(stream_object){
-
+function _addLocalStreamData(media_data){
+	this.local_media_data_list.push(media_data);
 }
 
-function _addRemoteStreamData(stream_object){
-	
+function _addRemoteStreamData(media_data){
+	this.remote_media_data_list.push(media_data);
 }
 
-function _addStreamDataToPeerConnection(pc,stream_object){
+function _addStreamDataToPeerConnection(pc,media_data){
 
 }

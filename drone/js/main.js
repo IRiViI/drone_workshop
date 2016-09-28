@@ -18,17 +18,21 @@ function callback(){
 	}
 
 	drone.joinSuccesful = function(){
-		console.log(drone);
 		drone.getConnectionsByHiveId(hive_id);
 	}
 
 	drone.getConnectionsByHiveIdSuccesful = function(data){
 		drone.peer_connection_manager.addPeerConnection();
-
+		drone.media_data_manager.createMediaData(true,false,createMediaDataCallback);
 	}
 
 	drone.getConnectionsByHiveIdFailure = function(error){
 		
+	}
+
+	function createMediaData(media_data){
+		drone.media_data_manager.addLocalStreamData(media_data);
+		console.log(drone);
 	}
 
 	drone.assign(key);
@@ -38,4 +42,3 @@ function callback(){
 
 var universe = location.origin.replace(/^http/, 'ws');
 var drone = new Drone(drone_id,universe,callback);
-var boe = new MediaData(true,false);
