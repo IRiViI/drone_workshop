@@ -54,7 +54,7 @@ function callback(){
 }
 
 function start(){
-	drone_id = document.getElementById('drone_id');
+	drone_id = document.getElementById('drone_id').value;
 	console.log(drone_id);
 	var universe = location.origin.replace(/^http/, 'ws');
 	drone = new Drone(drone_id,universe,callback);
