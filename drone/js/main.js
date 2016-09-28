@@ -1,5 +1,6 @@
 var hive_id 	= "kaas";
 var key 		= "$%^7ujhgy";
+var drone;
 
 var localVideo = document.getElementById('localVideo');
 var remoteVideo = document.getElementById('remoteVideo');
@@ -54,6 +55,7 @@ function callback(){
 
 function start(){
 	drone_id = document.getElementById('drone_id');
+	console.log(drone_id);
 	var universe = location.origin.replace(/^http/, 'ws');
-	var drone = new Drone(drone_id,universe,callback);
+	drone = new Drone(drone_id,universe,callback);
 }
