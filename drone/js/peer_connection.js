@@ -1,6 +1,6 @@
 function PeerConnection(root,connection,ice_servers){
 
-	RTCPeerConnection.apply(this,ice_servers)
+	window.RTCPeerConnection.apply(this,ice_servers)
 
 	//var pc = RTCPeerConnection(ice_servers);
 	this.root = root;
