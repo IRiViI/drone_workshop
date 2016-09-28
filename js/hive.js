@@ -2,7 +2,6 @@ var HiveDroneManager = require('./hive_drone_manager');
 var HivePermissionManager = require('./hive_permission_manager');
 var HiveConnectionManager = require('./hive_connection_manager');
 
-
 function Hive(hive_id,world_id){
 	// The world of the hive (this should be reorganized in beta)
 	this.world_id = world_id;

@@ -85,13 +85,17 @@ wss.on('connection', (ws) => {
 
   function _executeRequest(response,request){
 
-    if (request.tag == "assign"){
+    if (request.tag == "description"){
+      console.log(request);
+    }
+
+    else if (request.tag == "assign"){
       // Add id to drone
       universe.drone_manager.getDroneByWs(ws).id = request.drone_id;
       console.log("Drone assigned");
     }
 
-    if (request.tag == "create"){
+    else if (request.tag == "create"){
       // Create new hive (NOTE: user 1 is a temperary setting, must be revised in beta)
       var hive = universe.hive_manager.createHive(request.hive_id,"user1");
       // Add hives to universe
@@ -99,7 +103,7 @@ wss.on('connection', (ws) => {
       console.log("Hive created");
     }
 
-    if (request.tag == "join"){
+    else if (request.tag == "join"){
       // Get drone
       var drone = universe.drone_manager.getDroneById(request.drone_id);
       // Get hive
@@ -109,7 +113,7 @@ wss.on('connection', (ws) => {
       console.log("Drone joined hive");
     }
 
-    if (request.tag == "connections"){
+    else if (request.tag == "connections"){
       // Get drone
       var drone = universe.drone_manager.getDroneById(request.drone_id);
       // Get hive
@@ -118,7 +122,7 @@ wss.on('connection', (ws) => {
       console.log("Send connections");
     }
 
-    if (request.tag == "status"){
+    else if (request.tag == "status"){
       // Total number of hives
       var t_hive = universe.hive_manager.hive_list.length;
       console.log("number of hives: " + t_hive);
