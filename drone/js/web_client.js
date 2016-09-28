@@ -18,8 +18,12 @@ function websocketClient(parent,universe,callback){
     var request = JSON.parse(message.data);
     if (request.tag=="response"){
 
+      if (request.original_tag=="description"){
+        console.log(message);
+      }
+
       // Response to assign response
-      if (request.original_tag=="assign"){
+      else if (request.original_tag=="assign"){
         if (request.error==null){
           parent.assignSuccesful();
         } else{
@@ -28,7 +32,7 @@ function websocketClient(parent,universe,callback){
       }
 
       // Response to create response
-      if (request.original_tag=="create"){
+      else if (request.original_tag=="create"){
         if (request.error==null){
           parent.createSuccesful();
         } else{
@@ -37,7 +41,7 @@ function websocketClient(parent,universe,callback){
       }
 
       // Response to create response
-      if (request.original_tag=="join"){
+      else if (request.original_tag=="join"){
         if (request.error==null){
           parent.joinSuccesful();
         } else{
@@ -46,7 +50,7 @@ function websocketClient(parent,universe,callback){
       }
 
       // Response to get connections response
-      if (request.original_tag=="connections"){
+      else if (request.original_tag=="connections"){
         if (request.error==null){
           parent.getConnectionsByHiveIdSuccesful(request.data);
         } else{
