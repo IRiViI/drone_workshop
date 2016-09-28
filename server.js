@@ -83,7 +83,7 @@ wss.on('connection', (ws) => {
     return response;
   }
 
-  function _executeRequest(response,request){
+  function _executeRequest(response,request,message){
 
     if (request.tag == "description"){
       // Get to drone
