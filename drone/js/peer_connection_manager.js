@@ -22,6 +22,7 @@ function _createPeerConnection(connection){
 
 	function iceServerSuccesful(ice_servers){
 		pc = new PeerConnection(root,connection,ice_servers);
+		console.log(pc);
 		pc.createOffer(createOfferSucessful,createOfferFailure,{audio:connection.audio, video:connection.video});
 	}
 	iceServers(iceServerSuccesful)
