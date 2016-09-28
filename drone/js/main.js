@@ -29,7 +29,7 @@ function callback(){
 
 	drone.getConnectionsByHiveIdSuccesful = function(data){
 		console.log(data);
-		var t_data = data.length;
+		var t_connection = data.length;
 		for (var i_connection = 0; i_connection < t_connection; i_connection++){
 
 			drone.peer_connection_manager.addPeerConnection();
