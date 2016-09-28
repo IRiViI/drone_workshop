@@ -18,9 +18,9 @@ function _onicecandidate(event){
 	    }
 	    root.websocket_client.sendRequest(
 	      	tag:"candidate",
-	      	drone_id:root.id;
-	      	hive_id:this.hive_id;
-	      	to_drone_id:this.drone_id;
+	      	drone_id:root.id,
+	      	hive_id:this.hive_id,
+	      	to_drone_id:this.drone_id,
 	      	candidate:event.candidate,
 	    );
     };
