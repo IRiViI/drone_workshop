@@ -6,7 +6,7 @@ function MediaData(video,audio){
 	    video: video
 	};
 
-	window.navigator.getUserMedia(settings,this.getUserMediaSuccess,this.getUserMediaFailure);
+	window.navigator.getUserMedia.apply(this,settings,this.getUserMediaSuccess,this.getUserMediaFailure);
 }
 
 MediaData.prototype.getUserMediaSuccess = _getUserMediaSuccess;
