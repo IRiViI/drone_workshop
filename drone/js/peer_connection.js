@@ -11,7 +11,6 @@ function PeerConnection(to_drone_id,hive_id,ice_servers,settings){
 
 PeerConnection.prototype.onicecandidate = _onicecandidate;
 
-
 function _onicecandidate(event){
 	if (event.candidate != null){
       if (!event || !event.candidate) {

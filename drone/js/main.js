@@ -24,6 +24,7 @@ function callback(){
 
 	drone.getConnectionsByHiveIdSuccesful = function(data){
 		drone.peer_connection_manager.addPeerConnection();
+		var boe = new StreamData(true,false);
 	}
 
 	drone.getConnectionsByHiveIdFailure = function(error){
