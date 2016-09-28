@@ -29,7 +29,7 @@ function _onicecandidate(event){
 }
 
 function _connect(){
-	var pc;
+	var pc = this;
 	var root = this.root;
 
 	this.createOffer(
