@@ -31,7 +31,7 @@ function callback(){
 		console.log(connection_list);
 		var t_connection = connection_list.length;
 		for (var i_connection = 0; i_connection < t_connection; i_connection++){
-			var connnection = connection_list[i_connection]
+			var connection = connection_list[i_connection]
 			connection.hive_id = hive_id;
 			drone.peer_connection_manager.createPeerConnection(connection);
 			drone.peer_connection_manager.addPeerConnection();
