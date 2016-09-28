@@ -29,6 +29,7 @@ function _onicecandidate(event){
 }
 
 function _connect(){
+	var peer_connection;
 	var root = this.root;
 
 	this.createOffer(
@@ -41,8 +42,8 @@ function _connect(){
 	    root.websocket_client.sendRequest(
 	      	{tag:"description",
 	      	drone_id:root.id,
-	      	hive_id:this.hive_id,
-	      	to_drone_id:this.drone_id,
+	      	hive_id:peer_connection.hive_id,
+	      	to_drone_id:peer_connection.drone_id,
 	      	description:description}
 	    );
 	}

@@ -43,7 +43,7 @@ wss.on('connection', (ws) => {
 
     // Execute request
     if (response.error==null){
-      response = _executeRequest(response, request);
+      response = _executeRequest(response, request, message);
     }
 
     // Send response
