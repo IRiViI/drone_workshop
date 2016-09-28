@@ -25,7 +25,7 @@ function MediaData(video,audio){
 MediaData.prototype.getUserMediaFailure = _getUserMediaFailure;
 
 function _getUserMediaSuccess(media_data){
-  console(media_data);
+  console.log(media_data);
 	console.log("Warning: getUserMediaSuccess is undefined");
 }
 
