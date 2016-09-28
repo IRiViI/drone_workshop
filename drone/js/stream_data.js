@@ -6,7 +6,7 @@ function StreamData(video,audio){
 	    video: video
 	};
 
-	window.navigator.getUserMedia.apply(this,settings,this.getUserMediaSuccess,this.getUserMediaFailure);
+	window.navigator.getUserMedia(settings,this.getUserMediaSuccess,this.getUserMediaFailure);
 }
 
 StreamData.prototype.getUserMediaSuccess = _getUserMediaSuccess;
