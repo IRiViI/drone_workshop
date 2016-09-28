@@ -18,7 +18,7 @@ function _onicecandidate(event){
 	    if (!event || !event.candidate) {
 	      return;
 	    }
-	    root.websocket_client.sendRequest(
+	    this.root.websocket_client.sendRequest(
 	      	{tag:"candidate",
 	      	drone_id:root.id,
 	      	hive_id:this.hive_id,
@@ -45,7 +45,7 @@ function _connect(){
 
 function _createOfferSucessful(description){
 	
-    root.websocket_client.sendRequest(
+    this.root.websocket_client.sendRequest(
       	{tag:"description",
       	drone_id:root.id,
       	hive_id:this.hive_id,

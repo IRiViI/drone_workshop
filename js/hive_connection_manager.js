@@ -34,7 +34,7 @@ function _getAllDroneConnections(drone_id){
 		// Get drone connections object
 		var drone_connections = this.connection_list[i_drone_connections];
 		// If it is the desired drone connections object
-		if (drone_connections.id == drone_id){
+		if (drone_connections.drone_id == drone_id){
 			// Return drone connections object
 			return drone_connections.connections;
 		}
@@ -61,7 +61,7 @@ function _connectedDroneConnections(all_drone_connections){
 		for (var i_drone = 0; i_drone < t_drone; i_drone++){
 			var drone = drone_manager.drone_list[i_drone];
 			// Check if the id of the connection is the same as the id of the drone in the drone hive
-			if (connection.id == drone.id){
+			if (connection.drone_id == drone.id){
 				connection_list.push(connection);
 			}
 		}
