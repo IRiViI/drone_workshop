@@ -4,23 +4,23 @@ function MediaDataManager(){
 	this.remote_media_data_list = [];
 }
 
-MediaDataManager.prototype.getLocalStreamDataByType 		= _getLocalStreamDataByType;
-MediaDataManager.prototype.getRemoteStreamDataByDroneId 	= _getRemoteStreamDataByDroneId;
-MediaDataManager.prototype.createLocalStreamData 			= _createLocalStreamData;
-MediaDataManager.prototype.addLocalStreamData 				= _addLocalStreamData;
-MediaDataManager.prototype.addRemoteStreamData 				= _addRemoteStreamData;
-MediaDataManager.prototype.addStreamDataToPeerConnection	= _addStreamDataToPeerConnection;
+MediaDataManager.prototype.getLocalMediaDataByType 		= _getLocalMediaDataByType;
+MediaDataManager.prototype.getRemoteMediaDataByDroneId 	= _getRemoteMediaDataByDroneId;
+MediaDataManager.prototype.createMediaData 				= _createMediaData;
+MediaDataManager.prototype.addLocalMediaData 			= _addLocalMediaData;
+MediaDataManager.prototype.addRemoteMediaData 			= _addRemoteMediaData;
+MediaDataManager.prototype.addMediaDataToPeerConnection	= _addMediaDataToPeerConnection;
 
 
-function _getLocalStreamDataByType(video,audio){
-
-}
-
-function _getRemoteStreamDataByDroneId(to_drone_id){
+function _getLocalMediaDataByType(video,audio){
 
 }
 
-function _createLocalStreamData(video,audio,getUserMediaSuccess){
+function _getRemoteMediaDataByDroneId(to_drone_id){
+
+}
+
+function _createMediaData(video,audio,getUserMediaSuccess){
 
 	// user media settings
 	var settings = {
@@ -32,14 +32,14 @@ function _createLocalStreamData(video,audio,getUserMediaSuccess){
 
 }
 
-function _addLocalStreamData(media_data){
+function _addLocalMediaData(media_data){
 	this.local_media_data_list.push(media_data);
 }
 
-function _addRemoteStreamData(media_data){
+function _addRemoteMediaData(media_data){
 	this.remote_media_data_list.push(media_data);
 }
 
-function _addStreamDataToPeerConnection(pc,media_data){
+function _addMediaDataToPeerConnection(pc,media_data){
 
 }

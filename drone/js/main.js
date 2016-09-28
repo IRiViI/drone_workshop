@@ -31,7 +31,7 @@ function callback(){
 	}
 
 	function createMediaDataCallback(media_data){
-		drone.media_data_manager.addLocalStreamData(media_data);
+		drone.media_data_manager.addLocalMediaData(media_data);
 		console.log(drone);
 	}
 
