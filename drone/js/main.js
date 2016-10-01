@@ -33,10 +33,15 @@ function callback(){
 		console.log(connection_list);
 		var t_connection = connection_list.length;
 		for (var i_connection = 0; i_connection < t_connection; i_connection++){
+			// hive id, audio, video, to drone id
 			var connection = connection_list[i_connection]
 			connection.hive_id = hive_id;
+			settings.hive_id = hive_id;
+			settings.drone_id = connection.
+			settings.offerToReceiveAudio = connection.offerToReceiveAudio;
+			settings.offerToReceiveVideo = connection.offerToReceiveVideo;
+
 			drone.peer_connection_manager.createPeerConnection(connection);
-			drone.peer_connection_manager.addPeerConnection();
 		}
 	}
 
