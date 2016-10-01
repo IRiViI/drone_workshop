@@ -2,18 +2,18 @@ function PeerConnection(root,connection,ice_servers){
 
 	pc = window.RTCPeerConnection(ice_servers);
 
-	var pcSettings = _getPCSettings(root.id,connection);
-	console.log(pcSettings);
+	var pc_settings = _getPCSettings(root.id,connection);
+	console.log(pc_settings);
 
 	//var pc = RTCPeerConnection(ice_servers);
 	pc.root = root;
-	pc.drone_id = settings.drone_id;
+	pc.drone_id = pc_settings.drone_id;
 	pc.hive_id = connection.hive_id;
 	pc.settings = {
 		offerToReceiveAudio:connection.offerToReceiveAudio, 
 		offerToReceiveVideo:connection.offerToReceiveVideo, 
-		audio:settings.audio, 
-		video:settings.video};
+		audio:pc_settingss.audio, 
+		video:pc_settings.video};
 	pc.onicecandidate = _onicecandidate;
 	pc.connect = _connect;
 	return pc;
