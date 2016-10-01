@@ -11,7 +11,7 @@ PeerConnectionManager.prototype.onDescription = _onDescription;
 PeerConnectionManager.prototype.getPeerConnectionById = _getPeerConnectionById;
 
 function _addPeerConnection(){
-	console.log("test wwwuuuuut");
+	this.peer_connection_list.push(pc);
 }
 
 function _createPeerConnection(connection){
@@ -23,16 +23,19 @@ function _createPeerConnection(connection){
 	var root = this.root;
 
 	function iceServerSuccesful(ice_servers){
-		pc = PeerConnection(root,connection,ice_servers);
-		console.log(pc);
-		pc.connect();
+		var pc = PeerConnection(root,connection,ice_servers);
+		this.addPeerConnection(pc);
 	}
-	iceServers(iceServerSuccesful)
+	iceServers(iceServerSuccesful);
+	return pc;
 }
 
 // pc connection messages
 function _onDescription(request){
 	var pc = this.getPeerConnectionById(request.connection_id);
+	if (pc == null){
+		pc = this.createPeerConnection(request.connection);
+	}
 	console.log(pc);
 }
 
