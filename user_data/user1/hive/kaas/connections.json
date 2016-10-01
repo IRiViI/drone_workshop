@@ -1,36 +1,31 @@
-[
-	{
-	"drone_id":"drone1",
-	"hive_id":"kaas",
-	"connections":[
-		{"drone_id":"drone2",
-		"offerToReceiveAudio":false,
-		"offerToReceiveVideo":true,
-		"drone":[
-			{"drone_id":"drone1",
-			"audio":false,
-			"video":true},
-			{"drone_id":"drone2",
-			"audio":false,
-			"video":true}
-		]}
+{
+	"hive_id": "kaas",
+	"connection_list": [
+		{
+			"connection_id":"Kaas_1",
+			"offerToReceiveAudio":false,
+			"offerToReceiveVideo":true,
+			"drone":[
+				{"drone_id":"drone1",
+				"audio":false,
+				"video":true},
+				{"drone_id":"drone2",
+				"audio":false,
+				"video":true}
+			]
+		},
+		{
+			"connection_id":"Kaas_2",
+			"offerToReceiveAudio":false,
+			"offerToReceiveVideo":true,
+			"drone":[
+				{"drone_id":"drone2",
+				"audio":false,
+				"video":true},
+				{"drone_id":"drone3",
+				"audio":false,
+				"video":true}
+			]
+		}
 	]
-	},
-	{
-	"drone_id":"drone2",
-	"connections":[
-		{"drone_id":"drone1",
-		"hive_id":"kaas",
-		"offerToReceiveAudio":false,
-		"offerToReceiveVideo":true,
-		"drone":[
-			{"drone_id":"drone1",
-			"audio":false,
-			"video":true},
-			{"drone_id":"drone2",
-			"audio":false,
-			"video":true}
-		]}
-	]
-	}
-]
+}

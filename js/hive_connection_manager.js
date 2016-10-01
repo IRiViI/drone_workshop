@@ -10,23 +10,66 @@ function HiveConnectionManager(parent){
 }
 
 HiveConnectionManager.prototype.setConnectionList = _setConnectionList;
-HiveConnectionManager.prototype.getAllDroneConnections = _getAllDroneConnections;
+HiveConnectionManager.prototype.getAllDroneConnectionsStructure = _getAllDroneConnectionsStructure;
 HiveConnectionManager.prototype.getConnectedDroneConnections = _getConnectedDroneConnections;
 HiveConnectionManager.prototype.connectedDroneConnections = _connectedDroneConnections;
 HiveConnectionManager.prototype.checkDroneConnection = _checkDroneConnection;
-
-
+HiveConnectionManager.prototype.addRawConnectionList = _addRawConnectionList;
 
 function _setConnectionList(){
 	try{
-		this.connection_list = require("." + this.settings_file);
+		// Load connections from memmory
+		var raw_connection_list = require("." + this.settings_file);
+		// add raw connectionlist from dense to loose format
+		this.addRawConnectionList(raw_connection_list);
 	} catch(error){
 		console.log(error);
 	}
 	
 }
 
-function _getAllDroneConnections(drone_id){
+function _addRawConnectionList(data){
+	// Total number of connections
+	var t_connection = data.connection_list.length;
+	// For every connection
+	for (var i_connection = 0; i_connection < t_connection; i_connection++){
+		// Get connection
+		var connection = data.connection_list[i_connection];
+		// Get connection strcutre of both drones
+		var connection_1 = connection;
+
+		var connection_2 = connection;
+	}
+
+	return connections_list
+}
+
+function _addConnectionToConnectionStructure(id_1,id_2,connection){
+	// Set the target drone id 
+	connection.id = id_2;
+	// Find connection structure of drone 1
+	var connection_structure = this.getAllDroneConnectionsStructure(id_1);
+	if (connection_structure != null){
+		// Add connection if connection structure exists
+		connection_structure.connection_list.push(connection);
+	} else {
+		// Create new connection structure
+		connection_structure = _createDroneConnectionStructure(id_1);
+		// Add connection to connection structure
+		connection_structure.connection_list.push(connection);
+		// Add connections strucuture to connection structure list
+		this.connections_list.push(connection_structure);
+	}
+}
+
+function _createDroneConnectionStructure(drone_id){
+	var connection_structure = {};
+	connection_structure.drone_id = drone_id;
+	connection_structure.connection_list = {};
+	return connection_structure;
+}
+
+function _getAllDroneConnectionsStructure(drone_id){
 	// total number of defined drone connections
 	var t_drone_connections = this.connection_list.length;
 	// For every drone connections object
@@ -36,10 +79,10 @@ function _getAllDroneConnections(drone_id){
 		// If it is the desired drone connections object
 		if (drone_connections.drone_id == drone_id){
 			// Return drone connections object
-			return drone_connections.connections;
+			return drone_connections;
 		}
 	}
-	return [];
+	return null;
 }
 
 /**
@@ -70,8 +113,8 @@ function _connectedDroneConnections(all_drone_connections){
 }
 
 function _getConnectedDroneConnections(drone_id){
-	var all_drone_connections = this.getAllDroneConnections(drone_id);
-	return this.connectedDroneConnections(all_drone_connections);
+	var all_drone_connections_list = this.getAllDroneConnectionsStructure(drone_id).connection_list;
+	return this.connectedDroneConnections(all_drone_connections_list);
 }
 
 function _checkDroneConnection(drone_id_1,drone_id_2){
