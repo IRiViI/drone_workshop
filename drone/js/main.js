@@ -36,8 +36,12 @@ function callback(){
 			// hive id, audio, video, to drone id
 			var connection = connection_list[i_connection];
 			
-			var pc = drone.peer_connection_manager.createPeerConnection(connection);
-			pc.connect();
+			var pc = drone.peer_connection_manager.createPeerConnection(connection,onCreateSuccesful);
+			
+			function onCreateSuccesful(pc){
+				pc.connect();
+				console.log(pc);
+			}
 		}
 	}
 

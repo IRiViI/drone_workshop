@@ -14,7 +14,7 @@ function _addPeerConnection(){
 	this.peer_connection_list.push(pc);
 }
 
-function _createPeerConnection(connection){
+function _createPeerConnection(connection,callback){
 
 	// Initiate pc
 	var pc;
@@ -25,18 +25,22 @@ function _createPeerConnection(connection){
 	function iceServerSuccesful(ice_servers){
 		var pc = PeerConnection(root,connection,ice_servers);
 		this.addPeerConnection(pc);
+		callback(pc);
 	}
 	iceServers(iceServerSuccesful);
-	return pc;
 }
 
 // pc connection messages
 function _onDescription(request){
 	var pc = this.getPeerConnectionById(request.connection_id);
 	if (pc == null){
-		pc = this.createPeerConnection(request.connection);
+		pc = this.createPeerConnection(request.connection,onCreateSuccesful);
+	} else {
+		onCreateSuccesful(pc);
 	}
-	console.log(pc);
+	function onCreateSuccesful(pc){
+		console.log(pc);
+	}
 }
 
 
