@@ -18,7 +18,7 @@ function websocketClient(parent,universe,callback){
     var request = JSON.parse(message.data);
 
     if (request.tag=="description"){
-      parrent.peer_connection_manager;
+      //parent.peer_connection_manager
     }
 
     else if (request.tag=="response"){
