@@ -12,7 +12,7 @@ function PeerConnection(root,connection,ice_servers){
 	pc.settings = {
 		offerToReceiveAudio:connection.offerToReceiveAudio, 
 		offerToReceiveVideo:connection.offerToReceiveVideo, 
-		audio:pc_settingss.audio, 
+		audio:pc_settings.audio, 
 		video:pc_settings.video};
 	pc.onicecandidate = _onicecandidate;
 	pc.connect = _connect;
