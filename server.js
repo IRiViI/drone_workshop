@@ -90,6 +90,7 @@ wss.on('connection', (ws) => {
       var to_drone = universe.drone_manager.getDroneById(request.to_drone_id);
       // send message
       to_drone.ws.send(message);
+      console.log("check");
     }
 
     else if (request.tag == "assign"){
