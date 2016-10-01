@@ -44,7 +44,7 @@ function _addRawConnectionList(data){
 		console.log(this.connection_list);
 	}
 
-	return connections_list
+	return connection_list;
 }
 
 function _addConnectionToConnectionStructure(id_1,id_2,connection){
