@@ -1,6 +1,7 @@
 [
 	{
 	"drone_id":"drone1",
+	"hive_id":"kaas",
 	"connections":[
 		{"drone_id":"drone2",
 		"offerToReceiveAudio":false,
@@ -19,6 +20,7 @@
 	"drone_id":"drone2",
 	"connections":[
 		{"drone_id":"drone1",
+		"hive_id":"kaas",
 		"offerToReceiveAudio":false,
 		"offerToReceiveVideo":true,
 		"drone":[
