@@ -63,7 +63,7 @@ function _connect(){
 	function createOfferSucessful(description){
 	    root.websocket_client.sendRequest(
 	      	{tag:"description",
-	      	connection_id:pc.connection_id
+	      	connection_id:pc.connection_id,
 	      	drone_id:root.id,
 	      	hive_id:pc.hive_id,
 	      	to_drone_id:pc.drone_id,
