@@ -24,7 +24,7 @@ function websocketClient(parent,universe,callback){
     else if (request.tag=="response"){
 
       // Response to assign response
-      else if (request.original_tag=="assign"){
+      if (request.original_tag=="assign"){
         if (request.error==null){
           parent.assignSuccesful();
         } else{
