@@ -154,6 +154,7 @@ wss.on('connection', (ws) => {
   function _sendResponse(response){
     response.tag = "response";
     var message = JSON.stringify(response);
+    console.log(message);
     ws.send(message);
     
   }
