@@ -35,8 +35,6 @@ function callback(){
 		for (var i_connection = 0; i_connection < t_connection; i_connection++){
 			// hive id, audio, video, to drone id
 			var connection = connection_list[i_connection];
-
-			connection.hive_id = hive_id;
 			
 
 			drone.peer_connection_manager.createPeerConnection(connection);

@@ -7,6 +7,7 @@ function PeerConnection(root,connection,ice_servers){
 
 	//var pc = RTCPeerConnection(ice_servers);
 	pc.root = root;
+	console.log(connection);
 	pc.drone_id = connection.drone_id;
 	pc.hive_id = connection.hive_id;
 	pc.settings = {
