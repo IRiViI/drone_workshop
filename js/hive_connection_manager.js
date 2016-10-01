@@ -15,6 +15,7 @@ HiveConnectionManager.prototype.getConnectedDroneConnections = _getConnectedDron
 HiveConnectionManager.prototype.connectedDroneConnections = _connectedDroneConnections;
 HiveConnectionManager.prototype.checkDroneConnection = _checkDroneConnection;
 HiveConnectionManager.prototype.addRawConnectionList = _addRawConnectionList;
+HiveConnectionManager.prototype.addConnectionToConnectionStructure = _addConnectionToConnectionStructure;
 
 function _setConnectionList(){
 	try{
