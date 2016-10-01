@@ -68,7 +68,7 @@ function _addConnectionToConnectionStructure(id_1,id_2,connection){
 function _createDroneConnectionStructure(drone_id){
 	var connection_structure = {};
 	connection_structure.drone_id = drone_id;
-	connection_structure.connection_list = {};
+	connection_structure.connection_list = [];
 	return connection_structure;
 }
 
