@@ -16,11 +16,12 @@ function websocketClient(parent,universe,callback){
   ws.onmessage = function(message){
     console.log(message);
     var request = JSON.parse(message.data);
-    if (request.tag=="response"){
 
-      if (request.original_tag=="description"){
-        console.log(message);
-      }
+    if (request.tag=="description"){
+      parrent.peer_connection_manager;
+    }
+
+    else if (request.tag=="response"){
 
       // Response to assign response
       else if (request.original_tag=="assign"){

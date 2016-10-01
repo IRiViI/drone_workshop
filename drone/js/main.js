@@ -11,6 +11,8 @@ start_button.onclick = start;
 
 function callback(){
 
+	console.log(drone);
+
 	drone.assignSuccesful = function(){
 		drone.createHive(hive_id);
 	}
