@@ -60,8 +60,9 @@ function _addConnectionToConnectionStructure(id_1,id_2,connection){
 		connection_structure = _createDroneConnectionStructure(id_1);
 		// Add connection to connection structure
 		connection_structure.connection_list.push(connection);
+		console.log(connection_structure);
 		// Add connections strucuture to connection structure list
-		this.connections_list.push(connection_structure);
+		this.connection_list.push(connection_structure);
 	}
 }
 
