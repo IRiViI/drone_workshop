@@ -35,10 +35,12 @@ function _addRawConnectionList(data){
 	for (var i_connection = 0; i_connection < t_connection; i_connection++){
 		// Get connection
 		var connection = data.connection_list[i_connection];
-		// Get connection strcutre of both drones
-		var connection_1 = connection;
-
-		var connection_2 = connection;
+		var id_1 = connection.drone[0].drone_id;
+		var id_2 = connection.drone[1].drone_id;
+		console.log(connection);
+		this.addConnectionToConnectionStructure(id_1,id_2,connection);
+		this.addConnectionToConnectionStructure(id_2,id_1,connection);
+		console.log(this.connection_list);
 	}
 
 	return connections_list
