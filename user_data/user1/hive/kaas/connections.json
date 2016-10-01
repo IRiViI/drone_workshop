@@ -7,10 +7,10 @@
 		"offerToReceiveAudio":false,
 		"offerToReceiveVideo":true,
 		"drone":[
-			{"to_drone_id":"drone1",
+			{"drone_id":"drone1",
 			"audio":false,
 			"video":true},
-			{"to_drone_id":"drone2",
+			{"drone_id":"drone2",
 			"audio":false,
 			"video":true}
 		]}
