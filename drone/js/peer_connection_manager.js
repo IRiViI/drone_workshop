@@ -24,7 +24,7 @@ function _createPeerConnection(connection,callback){
 
 	function iceServerSuccesful(ice_servers){
 		var pc = PeerConnection(root,connection,ice_servers);
-		pc.addPeerConnection(pc);
+		root.peer_connection_manager.addPeerConnection(pc);
 		callback(pc);
 	}
 	iceServers(iceServerSuccesful);
