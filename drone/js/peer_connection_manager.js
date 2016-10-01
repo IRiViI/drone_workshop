@@ -7,6 +7,8 @@ function PeerConnectionManager(root){
 
 PeerConnectionManager.prototype.addPeerConnection = _addPeerConnection;
 PeerConnectionManager.prototype.createPeerConnection = _createPeerConnection;
+PeerConnectionManager.prototype.onDescription = _onDescription;
+PeerConnectionManager.prototype.getPeerConnectionById = _getPeerConnectionById;
 
 function _addPeerConnection(){
 	console.log("test wwwuuuuut");
@@ -28,6 +30,23 @@ function _createPeerConnection(connection){
 	iceServers(iceServerSuccesful)
 }
 
+// pc connection messages
+function _onDescription(request){
+	var pc = this.getPeerConnectionById(request.connection_id);
+	console.log(pc);
+}
+
+
+function _getPeerConnectionById(id){
+	var t_connection = this.peer_connection_list.length;
+	for (var i_connection = 0; i_connection < t_connection; i_connection++){
+		var connection = this.peer_connection_list[i_connection];
+		if (connection.connection._id = id){
+			return connection;
+		}
+	}
+	return null;
+}
 
 /*
 

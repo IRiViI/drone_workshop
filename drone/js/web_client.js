@@ -19,7 +19,7 @@ function websocketClient(parent,universe,callback){
 
     if (request.tag=="description"){
         if (request.description!=null){
-          parent.onDescription(request);
+          parent.peer_connection_manager.onDescription(request);
         }
     }
 
