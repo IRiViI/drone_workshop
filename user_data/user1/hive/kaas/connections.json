@@ -3,6 +3,7 @@
 	"connection_list": [
 		{
 			"connection_id":"Kaas_1",
+			"hive_id":"kaas",
 			"offerToReceiveAudio":false,
 			"offerToReceiveVideo":true,
 			"drone":[
@@ -16,6 +17,7 @@
 		},
 		{
 			"connection_id":"Kaas_2",
+			"hive_id":"kaas",
 			"offerToReceiveAudio":false,
 			"offerToReceiveVideo":true,
 			"drone":[
