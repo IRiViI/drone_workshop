@@ -66,7 +66,7 @@ function _connect(){
 	      	drone_id:root.id,
 	      	hive_id:pc.hive_id,
 	      	to_drone_id:pc.drone_id,
-	      	connection:pc.original_connection;
+	      	connection:pc.original_connection,
 	      	description:description}
 	    );
 	}
