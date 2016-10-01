@@ -87,7 +87,7 @@ Drone.prototype.getConnectionsByHiveIdFailure = function(error){
 
 // pc connection messages
 Drone.prototype.onDescription = function(request){
-
+	
 }
 
 // Debugging code
