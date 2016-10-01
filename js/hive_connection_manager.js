@@ -38,20 +38,17 @@ function _addRawConnectionList(data){
 		var connection = data.connection_list[i_connection];
 		var id_1 = connection.drone[0].drone_id;
 		var id_2 = connection.drone[1].drone_id;
-		console.log(connection);
 		this.addConnectionToConnectionStructure(id_1,id_2,connection);
 		this.addConnectionToConnectionStructure(id_2,id_1,connection);
-		console.log(this.connection_list);
 	}
 
-	return connection_list;
+	return true;
 }
 
 function _addConnectionToConnectionStructure(id_1,id_2,connection){
 	// Set the target drone id 
 	connection.id = id_2;
 	// Find connection structure of drone 1
-	var connection_structure = this.getAllDroneConnectionsStructure(id_1);
 	if (connection_structure != null){
 		// Add connection if connection structure exists
 		connection_structure.connection_list.push(connection);
@@ -60,7 +57,6 @@ function _addConnectionToConnectionStructure(id_1,id_2,connection){
 		connection_structure = _createDroneConnectionStructure(id_1);
 		// Add connection to connection structure
 		connection_structure.connection_list.push(connection);
-		console.log(connection_structure);
 		// Add connections strucuture to connection structure list
 		this.connection_list.push(connection_structure);
 	}
