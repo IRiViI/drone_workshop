@@ -113,6 +113,7 @@ function _connectedDroneConnections(all_drone_connections){
 }
 
 function _getConnectedDroneConnections(drone_id){
+	console.log(this.connections_list);
 	var all_drone_connections_list = this.getAllDroneConnectionsStructure(drone_id).connection_list;
 	return this.connectedDroneConnections(all_drone_connections_list);
 }
