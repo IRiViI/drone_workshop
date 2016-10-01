@@ -39,23 +39,24 @@ function _addRawConnectionList(data){
 		var id_1 = connection.drone[0].drone_id;
 		var id_2 = connection.drone[1].drone_id;
 		console.log(id_1 + "  " + id_2);
-		connection.drone = [id_1,id_2];
-		this.addConnectionToConnectionStructure(id_1,connection);
-		this.addConnectionToConnectionStructure(id_2,connection);
+		this.addConnectionToConnectionStructure(id_1,id_2,connection);
+		this.addConnectionToConnectionStructure(id_2,id_1,JSON.parse(JSON.stringify(connection)));
 	}
 
 	return true;
 }
 
-function _addConnectionToConnectionStructure(drone_id,connection){
+function _addConnectionToConnectionStructure(id_1,id_2,connection){
+	// Set the target drone id 
+	connection.drone_id = id_2;
 	// Find connection structure of drone 1
-	var connection_structure = this.getAllDroneConnectionsStructure(drone_id);
+	var connection_structure = this.getAllDroneConnectionsStructure(id_1);
 	if (connection_structure != null){
 		// Add connection if connection structure exists
 		connection_structure.connection_list.push(connection);
 	} else {
 		// Create new connection structure
-		connection_structure = _createDroneConnectionStructure(drone_id);
+		connection_structure = _createDroneConnectionStructure(id_1);
 		// Add connection to connection structure
 		connection_structure.connection_list.push(connection);
 		// Add connections strucuture to connection structure list
@@ -105,7 +106,7 @@ function _connectedDroneConnections(all_drone_connections){
 		for (var i_drone = 0; i_drone < t_drone; i_drone++){
 			var drone = drone_manager.drone_list[i_drone];
 			// Check if the id of the connection is the same as the id of the drone in the drone hive
-			if (connection.drone_id.indexOf(drone.id)){
+			if (connection.drone_id == drone.id){
 				connection_list.push(connection);
 			}
 		}
