@@ -49,6 +49,7 @@ function _addConnectionToConnectionStructure(id_1,id_2,connection){
 	// Set the target drone id 
 	connection.id = id_2;
 	// Find connection structure of drone 1
+	var connection_structure = this.getAllDroneConnectionsStructure(id_1);
 	if (connection_structure != null){
 		// Add connection if connection structure exists
 		connection_structure.connection_list.push(connection);
