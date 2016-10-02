@@ -8,7 +8,7 @@ function PeerConnection(root,connection,ice_servers){
 	pc.hive_id = connection.hive_id;
 
 	pc.connection = connection;
-	pc.media_settings = _getPCSettings(root.id,connections.media_settings);
+	pc.media_settings = _getPCSettings(root.id,connection);
 
 	pc.onicecandidate = _onicecandidate;
 	pc.connect = _connect;
