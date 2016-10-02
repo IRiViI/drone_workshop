@@ -41,6 +41,8 @@ function _onDescription(request){
 		// Continue if pc exists
 		onAnswerDescription(pc);
 	}
+
+	var root = this.root;
 	// Process a request
 	function onCreateSuccesful(pc){
 		pc.setRemoteDescription(
@@ -52,7 +54,7 @@ function _onDescription(request){
     		pc.createAnswer(anwerSuccesful,answerFailure);	
 	    }
 		function anwerSuccesful(answerDescription){
-		    this.root.web_client.sendRequest({
+		    root.websocket_client.sendRequest({
 		      	tag:"answer",
 		      	connection_id:pc.connection_id,
 		      	drone_id:root.id,
