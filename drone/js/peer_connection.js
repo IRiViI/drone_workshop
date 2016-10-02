@@ -12,7 +12,7 @@ function PeerConnection(root,connection,ice_servers){
 
 	pc.onicecandidate = _onicecandidate;
 	pc.connect = _connect;
-
+	console.log(pc);
 	return pc;
 
 }
