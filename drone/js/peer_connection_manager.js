@@ -44,7 +44,7 @@ function _onDescription(request){
 	// Process a request
 	function onCreateSuccesful(pc){
 		pc.setRemoteDescription(
-		    pc.onDescription(request.description),
+		    request.description,
 		    onSetRemoteSuccesful,
 		    onSetRemoteFailure
 		);
@@ -83,7 +83,7 @@ function _onDescription(request){
 	// Process an answer
 	function onAnswerDescription(pc){
 		pc.setRemoteDescription(
-		    pc.onDescription(request.description),
+		    request.description,
 		    onSetRemoteSuccesful,
 		    onSetRemoteFailure
 		);
