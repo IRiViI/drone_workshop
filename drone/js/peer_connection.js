@@ -4,11 +4,11 @@ function PeerConnection(root,connection,ice_servers){
 	pc.root = root;
 
 	pc.connection_id = connection.connection_id;
-	pc.drone_id = connection.drone_id;
+	pc.drone_id = _getOtherDroneId(root.drone_id);
 	pc.hive_id = connection.hive_id;
 
 	pc.connection = connection;
-	pc.media_settings = _getPCSettings(root.id,connection);
+	pc.media_settings = _getPCSettings(root.id,connections.media_settings);
 
 	pc.onicecandidate = _onicecandidate;
 	pc.connect = _connect;
@@ -28,6 +28,14 @@ function _getPCSettings(drone_id,connection){
 	return null;
 }
 
+function _getOtherDroneId(drone_id,media_settings){
+	for (var i_drone = 0; i_drone < 1; i_drone++){
+		var check_drone_id = media_settings[i_drone].id;
+		if (check_drone_id!=drone_id){
+			return check_drone_id;
+		}
+	}
+}
 
 function _onicecandidate(event){
 	if (event.candidate != null){
