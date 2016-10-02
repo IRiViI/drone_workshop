@@ -30,7 +30,8 @@ function _getPCSettings(drone_id,connection){
 
 function _getOtherDroneId(drone_id,media_settings){
 	for (var i_drone = 0; i_drone < 1; i_drone++){
-		var check_drone_id = media_settings[i_drone].id;
+		console.log(media_settings);
+		var check_drone_id = media_settings[i_drone].drone_id;
 		if (check_drone_id!=drone_id){
 			return check_drone_id;
 		}
