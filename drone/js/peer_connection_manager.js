@@ -52,7 +52,7 @@ function _onDescription(request){
     		pc.createAnswer(anwerSuccesful,answerFailure);	
 	    }
 		function anwerSuccesful(answerDescription){
-		    pc.websocket_client.sendRequest({
+		    this.root.websocket_client.sendRequest({
 		      	tag:"answer",
 		      	connection_id:pc.connection_id,
 		      	drone_id:root.id,
