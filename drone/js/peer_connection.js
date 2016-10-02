@@ -9,7 +9,7 @@ function PeerConnection(root,connection,ice_servers){
 
 	pc.connection = connection;
 	pc.media_settings = _getPCSettings(root.id,connection);
-	
+
 	pc.onicecandidate = _onicecandidate;
 	pc.onDescription = _onDescription;
 	pc.connect = _connect;
@@ -19,7 +19,6 @@ function PeerConnection(root,connection,ice_servers){
 }
 
 function _getPCSettings(drone_id,connection){
-	console.log(connection);
 	var t_drone_settings = connection.media_settings.length;
 	for (var i_drone_settings = 0; i_drone_settings < t_drone_settings; i_drone_settings++){
 		var drone_settings = connection.media_settings[i_drone_settings];
@@ -54,7 +53,7 @@ function _connect(){
 	this.createOffer(
 		createOfferSucessful,
 		createOfferFailure,
-		_getPCSettings(this.connection)
+		this.media_settings
 	);
 
 	function createOfferSucessful(description){
