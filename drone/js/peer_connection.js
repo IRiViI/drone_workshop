@@ -4,7 +4,7 @@ function PeerConnection(root,connection,ice_servers){
 	pc.root = root;
 
 	pc.connection_id = connection.connection_id;
-	pc.drone_id = _getOtherDroneId(root.drone_id);
+	pc.drone_id = _getOtherDroneId(root.id,connection.media_settings);
 	pc.hive_id = connection.hive_id;
 
 	pc.connection = connection;
