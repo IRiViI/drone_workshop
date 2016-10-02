@@ -32,14 +32,20 @@ function _createPeerConnection(connection,callback){
 
 // pc connection messages
 function _onDescription(request){
+	// Get peer connection with same id
 	var pc = this.getPeerConnectionById(request.connection_id);
 	if (pc == null){
+		// Create peer connetion when absence of peer connection is observed
 		pc = this.createPeerConnection(request.connection,onCreateSuccesful);
 	} else {
-		onCreateSuccesful(pc);
+		// Continue if pc exists
+		onAnswerDescription(pc);
 	}
 	function onCreateSuccesful(pc){
-		console.log(pc);
+		pc.onDescription(request.description);
+	}
+	function onAnswerDescription(pc){
+		pc.onAnswerDescription(request.description);
 	}
 }
 

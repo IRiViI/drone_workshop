@@ -4,9 +4,10 @@
 		{
 			"connection_id":"Kaas_1",
 			"hive_id":"kaas",
-			"offerToReceiveAudio":false,
-			"offerToReceiveVideo":true,
-			"drone":[
+			"connection_settings":{
+				"offerToReceiveAudio":false,
+				"offerToReceiveVideo":true},
+			"media_settings":[
 				{"drone_id":"drone1",
 				"audio":false,
 				"video":true},
@@ -18,9 +19,10 @@
 		{
 			"connection_id":"Kaas_2",
 			"hive_id":"kaas",
-			"offerToReceiveAudio":false,
-			"offerToReceiveVideo":true,
-			"drone":[
+			"connection_settings":{
+				"offerToReceiveAudio":false,
+				"offerToReceiveVideo":true},
+			"media_settings":[
 				{"drone_id":"drone2",
 				"audio":false,
 				"video":true},

@@ -3,28 +3,26 @@ function PeerConnection(root,connection,ice_servers){
 	pc = window.RTCPeerConnection(ice_servers);
 
 	var pc_settings = _getPCSettings(root.id,connection);
-	console.log(pc_settings);
 
-	pc.original_connection = connection;
-	pc.root = root;
 	pc.connection_id = connection.connection_id;
 	pc.drone_id = connection.drone_id;
 	pc.hive_id = connection.hive_id;
-	pc.settings = {
-		offerToReceiveAudio:connection.offerToReceiveAudio, 
-		offerToReceiveVideo:connection.offerToReceiveVideo, 
-		audio:pc_settings.audio, 
-		video:pc_settings.video};
+
+	pc.connection = connection;
+	pc.root = root;
+
 	pc.onicecandidate = _onicecandidate;
+	pc.onDescription = _onDescription;
 	pc.connect = _connect;
+
 	return pc;
 
 }
 
 function _getPCSettings(drone_id,connection){
-	var t_drone_settings = connection.drone.length;
+	var t_drone_settings = connection.media_settings.length;
 	for (var i_drone_settings = 0; i_drone_settings < t_drone_settings; i_drone_settings++){
-		var drone_settings = connection.drone[i_drone_settings];
+		var drone_settings = connection.media_settings[i_drone_settings];
 		if (drone_settings.drone_id == drone_id){
 			return drone_settings
 		}
@@ -56,7 +54,7 @@ function _connect(){
 	this.createOffer(
 		createOfferSucessful,
 		createOfferFailure,
-		this.settings
+		_getPCSettings(this.connection)
 	);
 
 	function createOfferSucessful(description){
@@ -66,7 +64,7 @@ function _connect(){
 	      	drone_id:root.id,
 	      	hive_id:pc.hive_id,
 	      	to_drone_id:pc.drone_id,
-	      	connection:pc.original_connection,
+	      	connection:pc.connection,
 	      	description:description}
 	    );
 	}
@@ -74,4 +72,23 @@ function _connect(){
 	function createOfferFailure(error){
 		console.log(error);
 	}
+}
+
+function _onDescription(description){
+
+	pc.setRemoteDescription(
+	    description,
+	    onSetRemoteSuccesful,
+	    onSetRemoteFailure);
+
+
+}
+
+function _onAnswerDescription(description){
+
+	pc.setRemoteDescription(
+	    description,
+	    onSetRemoteSuccesful,
+	    onSetRemoteFailure);
+
 }

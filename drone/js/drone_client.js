@@ -63,9 +63,22 @@ Drone.prototype.joinSuccesful = function(){
 	console.log("Warning: joinSuccesful undefined");
 }
 
-Drone.prototype.getConnectionsByHiveIdSuccesful = function(data){
-	console.log("Warning: getConnectionsByHiveIdSuccesful undefined");
-}	
+Drone.prototype.getConnectionsByHiveIdSuccesful = function(connection_list){
+	console.log(connection_list);
+	// Total number of peer connections of connected drones in this hive
+	var t_connection = connection_list.length;
+	for (var i_connection = 0; i_connection < t_connection; i_connection++){
+		// Get connection
+		var connection = connection_list[i_connection];
+		// Create peer connection
+		var pc = this.peer_connection_manager.createPeerConnection(connection,onCreateSuccesful);
+		
+		function onCreateSuccesful(pc){
+			// Start connection with other drone
+			pc.connect();
+		}
+	}
+}
 
 // Default Failure callbacks
 		

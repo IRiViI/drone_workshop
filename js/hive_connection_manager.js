@@ -36,9 +36,10 @@ function _addRawConnectionList(data){
 	for (var i_connection = 0; i_connection < t_connection; i_connection++){
 		// Get connection
 		var connection = data.connection_list[i_connection];
-		var id_1 = connection.drone[0].drone_id;
-		var id_2 = connection.drone[1].drone_id;
-		console.log(id_1 + "  " + id_2);
+		// Get id's
+		var id_1 = connection.media_settings[0].drone_id;
+		var id_2 = connection.media_settings[1].drone_id;
+		// Add connection
 		this.addConnectionToConnectionStructure(id_1,id_2,connection);
 		this.addConnectionToConnectionStructure(id_2,id_1,JSON.parse(JSON.stringify(connection)));
 	}
