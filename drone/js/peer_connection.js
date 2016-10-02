@@ -1,16 +1,15 @@
 function PeerConnection(root,connection,ice_servers){
 
 	pc = window.RTCPeerConnection(ice_servers);
-
-	var pc_settings = _getPCSettings(root.id,connection);
+	pc.root = root;
 
 	pc.connection_id = connection.connection_id;
 	pc.drone_id = connection.drone_id;
 	pc.hive_id = connection.hive_id;
 
 	pc.connection = connection;
-	pc.root = root;
-
+	pc.media_settings = _getPCSettings(root.id,connection);
+	
 	pc.onicecandidate = _onicecandidate;
 	pc.onDescription = _onDescription;
 	pc.connect = _connect;
@@ -20,6 +19,7 @@ function PeerConnection(root,connection,ice_servers){
 }
 
 function _getPCSettings(drone_id,connection){
+	console.log(connection);
 	var t_drone_settings = connection.media_settings.length;
 	for (var i_drone_settings = 0; i_drone_settings < t_drone_settings; i_drone_settings++){
 		var drone_settings = connection.media_settings[i_drone_settings];
