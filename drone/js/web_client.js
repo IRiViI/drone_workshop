@@ -23,6 +23,12 @@ function websocketClient(parent,universe,callback){
         }
     }
 
+    else if (request.tag=="answer"){
+        if (request.description!=null){
+          console.log("got answer");
+        }
+    }
+
     else if (request.tag=="response"){
 
       // Response to assign response
