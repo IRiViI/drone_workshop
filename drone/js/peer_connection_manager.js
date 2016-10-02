@@ -23,7 +23,6 @@ function _createPeerConnection(connection,callback){
 	var root = this.root;
 
 	function iceServerSuccesful(ice_servers){
-		console.log(connection);
 		var pc = PeerConnection(root,connection,ice_servers);
 		root.peer_connection_manager.addPeerConnection(pc);
 		callback(pc);
@@ -42,11 +41,58 @@ function _onDescription(request){
 		// Continue if pc exists
 		onAnswerDescription(pc);
 	}
+	// Process a request
 	function onCreateSuccesful(pc){
-		pc.onDescription(request.description);
+		pc.setRemoteDescription(
+		    pc.onDescription(request.description),
+		    onSetRemoteSuccesful,
+		    onSetRemoteFailure
+		);
+	    function onSetRemoteSuccesful(){
+    		pc.createAnswer(anwerSuccesful,answerFailure);	
+	    }
+		function anwerSuccesful(answerDescription){
+		    pc.websocket_client.sendRequest({
+		      	tag:"answer",
+		      	connection_id:pc.connection_id,
+		      	drone_id:root.id,
+		      	hive_id:pc.hive_id,
+		      	to_drone_id:pc.drone_id,
+		      	description:answerDescription}
+		    );
+
+	      	pc.setLocalDescription(
+		        answerDescription,
+		        setLocalSuccesful,
+		        setLocalFailure);
+	    }
+		function setLocalSuccesful(event){
+		  	//console.log("setLocalSuccesful:");
+		  	//console.log(event);
+		}
+	    function onSetRemoteFailure(error){
+	      	console.log(error);
+	    }
+		function setLocalFailure(error){
+		  	console.log(error);
+		}
+	    function answerFailure(error){
+	      	console.log(error);
+	    }
 	}
+	// Process an answer
 	function onAnswerDescription(pc){
-		pc.onAnswerDescription(request.description);
+		pc.setRemoteDescription(
+		    pc.onDescription(request.description),
+		    onSetRemoteSuccesful,
+		    onSetRemoteFailure
+		);
+	    function onSetRemoteSuccesful(){
+    		//	
+	    }
+	    function onSetRemoteFailure(error){
+	      	console.log(error);
+	    }
 	}
 }
 

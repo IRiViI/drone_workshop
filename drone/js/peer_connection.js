@@ -11,7 +11,6 @@ function PeerConnection(root,connection,ice_servers){
 	pc.media_settings = _getPCSettings(root.id,connection);
 
 	pc.onicecandidate = _onicecandidate;
-	pc.onDescription = _onDescription;
 	pc.connect = _connect;
 
 	return pc;
@@ -35,6 +34,7 @@ function _onicecandidate(event){
 	    if (!event || !event.candidate) {
 	      return;
 	    }
+	    console.log("send Candidate");
 	    // Send request
 	    this.root.websocket_client.sendRequest(
 	      	{tag:"candidate",
@@ -57,8 +57,8 @@ function _connect(){
 	);
 
 	function createOfferSucessful(description){
-	    root.websocket_client.sendRequest(
-	      	{tag:"description",
+	    root.websocket_client.sendRequest({
+	      	tag:"description",
 	      	connection_id:pc.connection_id,
 	      	drone_id:root.id,
 	      	hive_id:pc.hive_id,
@@ -71,23 +71,4 @@ function _connect(){
 	function createOfferFailure(error){
 		console.log(error);
 	}
-}
-
-function _onDescription(description){
-
-	pc.setRemoteDescription(
-	    description,
-	    onSetRemoteSuccesful,
-	    onSetRemoteFailure);
-
-
-}
-
-function _onAnswerDescription(description){
-
-	pc.setRemoteDescription(
-	    description,
-	    onSetRemoteSuccesful,
-	    onSetRemoteFailure);
-
 }
